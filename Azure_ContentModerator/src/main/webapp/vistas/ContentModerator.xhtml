@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./Plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+    <ui:define name="content">
+        <h:head>
+        </h:head>
+        <p:growl id="msg" severity="info,warn,fatal" showSummary="true" showDetail="true"/>
+
+        <h:body>
+            <br/>
+            <h:form id="form">
+                <center>
+                    <br/>
+                    <h1 style="color:black; font-weight:bold; font-size:45px">AZURE - CONTENT MODERATOR - EVALUACIÓN DE IMÁGENES</h1>
+                    <br/>
+                    <p:outputLabel value="Ingrese Link de la Imagen" style="color:black; font-weight:bold; font-size:25px"/>
+                    <br/><br/>
+                    <p:inputText id="URL" class="input-block" value="#{contentmoderatorC.modelo.URL}" required="true" requiredMessage="Ingrese Link de la Imagen" style="font-size: 15px; font-weight:bold; color: blue; width: 1300px"/>                                
+                    <br/><br/>
+                    <p:commandButton id="btnConsultar" value="CONSULTAR" actionListener="#{contentmoderatorC.obtenerDatosImagen()}" 
+                                     update="form msg RESULTADO" icon="pi pi-check-square" style="font-weight:bold; font-size:20px">
+                    </p:commandButton>
+                    <br/><br/>
+                    <p:panelGrid columns="4">                            
+                        <p:outputLabel value="PROCENTAJE ADULTO" style="font-size: 25px; font-weight:bold; color: blue"/>
+                        <p:outputLabel value="CLASIFICACION ADULTO" style="font-size: 25px; font-weight:bold; color: black"/>
+                        <p:outputLabel value="PROCENTAJE PICANTE" style="font-size: 25px; font-weight:bold; color: blue"/>
+                        <p:outputLabel value="CLASIFICACION PICANTE" style="font-size: 25px; font-weight:bold; color: black"/>
+                        <p:outputLabel value="#{contentmoderatorC.modelo.PUNTAJE_ADULTO}" style="font-size: 20px; font-weight:bold; color: blue"/>
+                        <p:outputLabel value="#{contentmoderatorC.modelo.CLASIFICACION_ADULTO}" style="font-size: 20px; font-weight:bold; color: black"/>
+                        <p:outputLabel value="#{contentmoderatorC.modelo.PUNTAJE_PICANTE}" style="font-size: 20px; font-weight:bold; color: blue"/>
+                        <p:outputLabel value="#{contentmoderatorC.modelo.CLASIFICACION_PICANTE}" style="font-size: 20px; font-weight:bold; color: black"/>
+                    </p:panelGrid>
+                    <br/>
+                    <center>
+                        <p:panelGrid columns="7" styleClass="ui-noborder">
+                            <p:graphicImage name="#{contentmoderatorC.modelo.IMAGEN}" width="230" height="230">
+                            </p:graphicImage>
+                            <p:spacer/><p:spacer/>
+                            <img src="#{contentmoderatorC.modelo.URL}" width="300" height="200"/>
+                            <p:spacer/><p:spacer/>
+                            <p:graphicImage name="#{contentmoderatorC.modelo.IMAGEN}" width="230" height="230">
+                            </p:graphicImage>
+                        </p:panelGrid>
+                    </center>
+                    <br/>
+                    <p:outputLabel id="RESULTADO" value="#{contentmoderatorC.modelo.RESULTADO}" style="font-size: 30px; font-weight:bold; color: black"/>
+                    <p:blockUI block="form" trigger="btnConsultar"/>
+                </center>
+            </h:form>
+        </h:body>
+    </ui:define>
+
+</ui:composition>
