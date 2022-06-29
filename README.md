@@ -1,7 +1,7 @@
 # Cognitive Services - Content Moderator con Java EE
 
 **1. Cognitive Services**
-<img src ="https://wakeupandcode.com/wp-content/uploads/2019/08/azure-cognitive-services-bootcamp-event-image.png" align="right" style="height: 30px width: 300px"/>
+<img src ="https://wakeupandcode.com/wp-content/uploads/2019/08/azure-cognitive-services-bootcamp-event-image.png" align="right" style="height: 0px width: 300px"/>
 - Azure - Content Moderator
 - Evaluación de Imágenes: Ofensivo o No Ofensivo
 
