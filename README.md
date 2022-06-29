@@ -1,12 +1,12 @@
 # Cognitive Services - Content Moderator con Java EE
 
 **1. Cognitive Services**
-<img src ="https://wakeupandcode.com/wp-content/uploads/2019/08/azure-cognitive-services-bootcamp-event-image.png" align="right" style="width: 300px"/>
+<img src ="https://wakeupandcode.com/wp-content/uploads/2019/08/azure-cognitive-services-bootcamp-event-image.png" align="right" style="width: 200px"/>
 - Azure - Content Moderator
 - Evaluación de Imágenes: Ofensivo o No Ofensivo
 
 **2. Java EE**
-<img src ="https://i0.wp.com/windtux.com/wp-content/uploads/2017/08/javaee-logo.png?ssl=1" align="right" style="width: 300px"/>
+<img src ="https://i0.wp.com/windtux.com/wp-content/uploads/2017/08/javaee-logo.png?ssl=1" align="right" style="width: 200px"/>
 - Java: JDK 11
 - Java EE: Java EE 8 Web
 - IDE: Apache NetBeans IDE 12.0
