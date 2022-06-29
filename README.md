@@ -1,4 +1,4 @@
-# Azure Cognitive Services - Content Moderator con Java EE
+# Cognitive Services - Content Moderator con Java EE
 
 **1. Cognitive Services**
 - Azure - Content Moderator
