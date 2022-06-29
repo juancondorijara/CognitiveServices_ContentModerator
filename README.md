@@ -6,7 +6,7 @@
 - Evaluación de Imágenes: Ofensivo o No Ofensivo
 
 **2. Java EE**
-<img src ="https://i0.wp.com/windtux.com/wp-content/uploads/2017/08/javaee-logo.png?ssl=1" align="right" style="height=5px width: 20px"/>
+<img src ="https://i0.wp.com/windtux.com/wp-content/uploads/2017/08/javaee-logo.png?ssl=1" align="right" style="width: 20px"/>
 - Java: JDK 11
 - Java EE: Java EE 8 Web
 - IDE: Apache NetBeans IDE 12.0
@@ -16,7 +16,7 @@
 - Componente: Primefaces 11.0.0
 
 **3. Maven Dependencias:**
-<img src ="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Apache_Maven_logo.svg/1280px-Apache_Maven_logo.svg.png" align="right" style="height: 32px"/>
+<!--<img src ="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Apache_Maven_logo.svg/1280px-Apache_Maven_logo.svg.png" align="right" style="height: 32px"/>-->
 * lombok 1.18.20
 * primefaces 11.0.0
 * jakarta.jakartaee-api ${jakarta.jakartaee-api.version}
