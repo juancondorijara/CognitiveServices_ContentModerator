@@ -1,7 +1,7 @@
 # Cognitive Services - Content Moderator con Java EE
 
 **1. Cognitive Services**
-<img src ="https://www.enmilocalfunciona.io/content/images/2018/07/cognitive-logo.jpg" align="right" style="height: 32px"/>
+<img src ="https://wakeupandcode.com/wp-content/uploads/2019/08/azure-cognitive-services-bootcamp-event-image.png" align="right" width="30px" height="30px"/>
 - Azure - Content Moderator
 - Evaluación de Imágenes: Ofensivo o No Ofensivo
 
