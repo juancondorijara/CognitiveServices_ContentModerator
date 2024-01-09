@@ -1,43 +1,24 @@
-package controller;
+package dao;
 
-import dao.ContentModeratorImpl;
 import java.io.IOException;
-import javax.inject.Named;
-import javax.enterprise.context.SessionScoped;
-import java.io.Serializable;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import model.ContentModerator;
-import lombok.Data;
-import org.json.JSONException;
 import org.json.JSONObject;
 import services.ContentModeratorS;
+import lombok.Data;
+import org.json.JSONException;
 
 @Data
-@Named(value = "contentmoderatorC")
-@SessionScoped
-public class ContentModeratorC implements Serializable {
+public class ContentModeratorImpl {
 
     ContentModerator modelo;
-    ContentModeratorImpl dao;
-    
-    public ContentModeratorC() {
+
+    public ContentModeratorImpl() {
         modelo = new ContentModerator();
-        dao = new ContentModeratorImpl();
-        modelo.setIMAGEN("images/bueno.png");
-        modelo.setURL("https://moderatorsampleimages.blob.core.windows.net/samples/sample.jpg");
     }
 
     public void obtenerDatosImagen() throws Exception {
-        try {
-            validarDatosImagen();
-//            dao.obtenerDatosImagen();
-        } catch (IOException | JSONException e) {
-            System.out.println("Error en obtenerDatosIamgenC: " + e.getMessage());
-        }
-    }
-    
-    public void validarDatosImagen() throws Exception {
         try {
             JSONObject cadenaJson = ContentModeratorS.obtenerJSonImagen(modelo);
             modelo.setPUNTAJE_ADULTO(cadenaJson.getDouble("AdultClassificationScore"));
@@ -59,7 +40,7 @@ public class ContentModeratorC implements Serializable {
                 modelo.setIMAGEN("images/bueno.png");
             }
         } catch (IOException | JSONException e) {
-            System.out.println("Error en validarDatosImagenC: " + e.getMessage());
+            System.out.println("Error en obtenerDatosIamgenImpl: " + e.getMessage());
         }
     }
 
