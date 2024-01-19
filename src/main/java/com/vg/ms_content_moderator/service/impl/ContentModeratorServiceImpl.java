@@ -58,12 +58,6 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
             contentModerator.setImage("https://drive.google.com/file/d/1AvwuhGqrgZyA14rFG_8uCVbgaLD3_32H/view?usp=drive_link");
             contentModerator.setResultString("Imagen NO MODERADA");
         }
-//        log.info("MOSTRANDO DATOS" + contentModerator.toString());
-//        log.info("MOSTRANDO: " + contentModerator.getAdultClassificationScore());
-//        log.info("MOSTRANDO: " + contentModerator.isImageAdultClassified());
-//        log.info("MOSTRANDO: " + contentModerator.getRacyClassificationScore());
-//        log.info("MOSTRANDO: " + contentModerator.isImageRacyClassified());
-//        log.info("MOSTRANDO: " + contentModerator.isResultBoolean());
         } catch (Exception e) {
             log.error("Error en el API: " + e.getMessage());
         }
