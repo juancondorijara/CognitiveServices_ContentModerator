@@ -1,7 +1,0 @@
-URL DE PRUEBAS PARA AZURE CONTENT MODERATOR
-
-NADA OFENSIVO, la IMAGEN no es subido de tono ni para adultos
-https://moderatorsampleimages.blob.core.windows.net/samples/sample.jpg
-
-MUY OFENSIVO, la IMAGEN es subido de tono y para adultos
-https://www.qhubomedellin.com/wp-content/uploads/2021/08/only-678x381.jpg
