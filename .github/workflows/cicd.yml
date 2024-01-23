@@ -6,7 +6,11 @@ on:
 
 jobs:
   build_dockerhub:
+    name: Build and Push Image
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
@@ -18,13 +22,24 @@ jobs:
     - name: Build with Maven
       run: mvn clean install
 
-    - name: Build Docker Image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/ms_content_moderator:latest .
-    
-    - name: Push to Docker Hub
-      uses: docker/build-push-action@v2
+    - uses: actions/checkout@master
+    - name: docker login
+      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
       with:
-       username: ${{ secrets.DOCKER_USERNAME }}
-       password: ${{ secrets.DOCKER_PASSWORD }}
-       repository: ${{ secrets.DOCKER_USERNAME }}/ms_content_moderator
-       tags: latest
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Extract metadata (tags, labels) for Docker
+      id: meta
+      uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+      with:
+        images: juan321/ms_content_moderator
+
+    - name: Build and Push Docker Image
+      uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+      with:
+        context: .
+        push: true
+        tags: ${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
+        file: Dockerfile
