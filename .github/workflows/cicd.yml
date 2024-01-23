@@ -40,9 +40,6 @@ jobs:
   build_dockerhub:
     name: Build and Push Image
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
