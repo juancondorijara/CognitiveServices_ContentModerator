@@ -6,8 +6,6 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "ContentModerator")
 public class ContentModerator {
 

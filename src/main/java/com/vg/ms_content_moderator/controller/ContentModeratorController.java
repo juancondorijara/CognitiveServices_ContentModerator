@@ -8,12 +8,15 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/ms_content_moderator")
 public class ContentModeratorController {
 
+    private final ContentModeratorService contentModeratorService;
+
     @Autowired
-    private ContentModeratorService contentModeratorService;
+    public ContentModeratorController(ContentModeratorService contentModeratorService) {
+        this.contentModeratorService = contentModeratorService;
+    }
 
     @GetMapping
     public Flux<ContentModerator> getAll(){

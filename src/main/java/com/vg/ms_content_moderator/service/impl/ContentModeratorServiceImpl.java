@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
@@ -18,11 +17,14 @@ import org.json.JSONObject;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class ContentModeratorServiceImpl implements ContentModeratorService {
 
+    private final ContentModeratorRepository contentModeratorRepository;
+
     @Autowired
-    private ContentModeratorRepository contentModeratorRepository;
+    public ContentModeratorServiceImpl(ContentModeratorRepository contentModeratorRepository) {
+        this.contentModeratorRepository = contentModeratorRepository;
+    }
 
     @Override
     public Flux<ContentModerator> getAll() {
@@ -41,7 +43,7 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
                 .method("POST", body)
                 .addHeader("Host", "eastus.api.cognitive.microsoft.com")
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Ocp-Apim-Subscription-Key", "f591ffe6b4f9413b8aedbca7844a5d51")
+                .addHeader("Ocp-Apim-Subscription-Key", "8150ba9e33824e3a9ff48a5f29eeb7ce")
                 .build();
         Response response = client.newCall(request).execute();
         JSONObject jsonObject = new JSONObject(response.body().string());
@@ -58,6 +60,7 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
             contentModerator.setImage("https://drive.google.com/file/d/1AvwuhGqrgZyA14rFG_8uCVbgaLD3_32H/view?usp=drive_link");
             contentModerator.setResultString("Imagen NO MODERADA");
         }
+
         } catch (Exception e) {
             log.error("Error en el API: " + e.getMessage());
         }
