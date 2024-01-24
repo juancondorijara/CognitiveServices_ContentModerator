@@ -49,14 +49,7 @@ jobs:
           java-version: '17'
           distribution: 'zulu'
       - name: Build With Maven
-        run: mvn clean install
-      - name: Build Docker Image
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          dockerfile: Dockerfile
-          push: false
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ms_content_moderator:latest
+        run: mvn clean install         
       - name: docker login
         uses: docker/login-action@v1
         with:
