@@ -1,4 +1,4 @@
-# Cognitive Services - Content Moderator con Java EE
+# Cognitive Services - Content Moderator con Spring Boot
 **Servicio Cognitivo de Azure**, implementado para evaluar imágenes **Ofensivo** o **No Ofensivo**, es decir, si la imagen tiene contenido subido de tono o para adultos, generando la API desde Azure Sandbox para consumirlo en Java.
 
 **1. Cognitive Services**
@@ -6,20 +6,20 @@
 - Azure - Content Moderator
 - Evaluación de Imágenes: Ofensivo o No Ofensivo
 
-**2. Java EE**
-<img src ="https://i0.wp.com/windtux.com/wp-content/uploads/2017/08/javaee-logo.png?ssl=1" align="right" style="width: 200px"/>
-- Java: JDK 11
-- Java EE: Java EE 8 Web
-- IDE: Apache NetBeans IDE 12.0
-- Maven: Apache Maven 3.6.3
-- Server: Payara Server 5.202
-- Frameworks: Javaserver Faces JSF 2.3
-- Componente: Primefaces 11.0.0
+**2. Spring Boot**
+<img src ="https://miro.medium.com/v2/resize:fit:716/1*98O4Gb5HLSlmdUkKg1DP1Q.png" align="right" style="height:60px; width: 200px"/>
+- Java: JDK 17
+- IDE: IntelliJ IDEA 2020.3.2
+- Maven: Apache Maven 3.8.1
+- Server: Tomcat
+- Frameworks: Spring Boot
 
 **3. Maven Dependencias:**
 <img src ="https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Apache_Maven_logo.svg/1280px-Apache_Maven_logo.svg.png" align="right" style="width: 200px"/>
-* lombok 1.18.20
-* primefaces 11.0.0
-* jakarta.jakartaee-api ${jakarta.jakartaee-api.version}
-* okhttp 4.2.2
-* json 20160810
+* spring-boot-starter-webflux
+* spring-boot-starter-data-r2dbc
+* lombok
+* reactor-test
+* r2dbc-postgresql
+* json
+* okhttp
