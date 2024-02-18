@@ -6,8 +6,8 @@ on:
 
 jobs:
   #SONARCLOUD
-  build_sonarcloud:
-    name: Build and analyze
+  sonarcloud:
+    name: Build and Analyze
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -37,7 +37,7 @@ jobs:
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=juancondorijara_CognitiveServices_ContentModerator
         
   #DOCKERHUB
-  build_dockerhub:
+  dockerhub:
     name: Build and Push Image
     runs-on: ubuntu-latest
     steps:
