@@ -47,7 +47,9 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
                 .addHeader("Ocp-Apim-Subscription-Key", "8150ba9e33824e3a9ff48a5f29eeb7ce")
                 .build();
         Response response = client.newCall(request).execute();
+
         JSONObject jsonObject = new JSONObject(response.body().string());
+        
         contentModerator.setAdultClassificationScore(jsonObject.getDouble("AdultClassificationScore"));
         contentModerator.setImageAdultClassified(jsonObject.getBoolean("IsImageAdultClassified"));
         contentModerator.setRacyClassificationScore(jsonObject.getDouble("RacyClassificationScore"));
@@ -63,8 +65,6 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
         }
 
         } catch (Exception e) {
-            log.error("Error en el API: " + e.getMessage());
-            log.error("Error en el API: " + e.getMessage());
             log.error("Error en el API: " + e.getMessage());
         }
         return contentModeratorRepository.save(contentModerator);
