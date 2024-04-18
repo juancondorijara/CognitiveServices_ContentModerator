@@ -63,6 +63,8 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
 
         } catch (Exception e) {
             log.error("Error en el API: " + e.getMessage());
+            log.error("Error en el API: " + e.getMessage());
+            log.error("Error en el API: " + e.getMessage());
         }
         return contentModeratorRepository.save(contentModerator);
     }
