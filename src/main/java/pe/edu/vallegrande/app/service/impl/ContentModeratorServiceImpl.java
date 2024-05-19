@@ -1,8 +1,8 @@
-package com.vg.ms_content_moderator.service.impl;
+package pe.edu.vallegrande.app.service.impl;
 
-import com.vg.ms_content_moderator.model.ContentModerator;
-import com.vg.ms_content_moderator.repository.ContentModeratorRepository;
-import com.vg.ms_content_moderator.service.ContentModeratorService;
+import pe.edu.vallegrande.app.model.ContentModerator;
+import pe.edu.vallegrande.app.repository.ContentModeratorRepository;
+import pe.edu.vallegrande.app.service.ContentModeratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -37,7 +37,6 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
         try {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         MediaType mediaType = MediaType.parse("application/json");
-        @SuppressWarnings("deprecation")
         RequestBody body = RequestBody.create(mediaType, "{\r\n  \"DataRepresentation\":\"URL\",\r\n  \"Value\":\"" + contentModerator.getUrl() + "\"\r\n}");
         Request request = new Request.Builder()
                 .url("https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessImage/Evaluate")
@@ -47,9 +46,7 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
                 .addHeader("Ocp-Apim-Subscription-Key", "8150ba9e33824e3a9ff48a5f29eeb7ce")
                 .build();
         Response response = client.newCall(request).execute();
-
         JSONObject jsonObject = new JSONObject(response.body().string());
-        
         contentModerator.setAdultClassificationScore(jsonObject.getDouble("AdultClassificationScore"));
         contentModerator.setImageAdultClassified(jsonObject.getBoolean("IsImageAdultClassified"));
         contentModerator.setRacyClassificationScore(jsonObject.getDouble("RacyClassificationScore"));

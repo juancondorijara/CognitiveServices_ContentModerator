@@ -6,10 +6,10 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.1</version>
-		<relativePath/> <!-- lookup parent from repositoryyy -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.vg</groupId>
-	<artifactId>ms_content_moderator</artifactId>
+	<groupId>pe.edu.vallegrande</groupId>
+	<artifactId>app</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ms_content_moderator</name>
 	<description>Demo project for Spring Boot</description>

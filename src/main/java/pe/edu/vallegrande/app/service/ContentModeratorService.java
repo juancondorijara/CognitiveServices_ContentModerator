@@ -1,6 +1,6 @@
-package com.vg.ms_content_moderator.service;
+package pe.edu.vallegrande.app.service;
 
-import com.vg.ms_content_moderator.model.ContentModerator;
+import pe.edu.vallegrande.app.model.ContentModerator;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;

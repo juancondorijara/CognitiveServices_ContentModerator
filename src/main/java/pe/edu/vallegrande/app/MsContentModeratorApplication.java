@@ -1,4 +1,4 @@
-package com.vg.ms_content_moderator;
+package pe.edu.vallegrande.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

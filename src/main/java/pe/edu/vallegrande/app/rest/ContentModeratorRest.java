@@ -1,7 +1,7 @@
-package com.vg.ms_content_moderator.controller;
+package pe.edu.vallegrande.app.rest;
 
-import com.vg.ms_content_moderator.model.ContentModerator;
-import com.vg.ms_content_moderator.service.ContentModeratorService;
+import pe.edu.vallegrande.app.model.ContentModerator;
+import pe.edu.vallegrande.app.service.ContentModeratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -9,12 +9,12 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/ms_content_moderator")
-public class ContentModeratorController {
+public class ContentModeratorRest {
 
     private final ContentModeratorService contentModeratorService;
 
     @Autowired
-    public ContentModeratorController(ContentModeratorService contentModeratorService) {
+    public ContentModeratorRest(ContentModeratorService contentModeratorService) {
         this.contentModeratorService = contentModeratorService;
     }
 

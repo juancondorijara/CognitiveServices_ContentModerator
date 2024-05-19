@@ -1,4 +1,4 @@
-package com.vg.ms_content_moderator.model;
+package pe.edu.vallegrande.app.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

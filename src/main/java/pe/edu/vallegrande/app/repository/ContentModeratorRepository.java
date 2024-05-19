@@ -1,11 +1,10 @@
-package com.vg.ms_content_moderator.repository;
+package pe.edu.vallegrande.app.repository;
 
-import com.vg.ms_content_moderator.model.ContentModerator;
+import pe.edu.vallegrande.app.model.ContentModerator;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import org.springframework.stereotype.Repository;
-import reactor.core.publisher.Flux; //List
-//import reactor.core.publisher.Mono; //Individual
+import reactor.core.publisher.Flux;
 
 @Repository
 public interface ContentModeratorRepository extends ReactiveCrudRepository<ContentModerator, Integer> {

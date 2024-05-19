@@ -1,12 +1,11 @@
 server:
-  port: 8086
+  port: 8085
 
 spring:
   application:
     name: ms_content_moderator
   r2dbc:
     #url: r2dbc:postgresql://localhost:5432/content_moderator
-    #url: r2dbc:postgresql://localhost:5432/content_moderator
-    url: r2dbc:pool:postgres://batyr.db.elephantsql.com:5432/mkyhttrp
+    url: r2dbc:postgres://batyr.db.elephantsql.com:5432/mkyhttrp
     username: mkyhttrp
     password: BrP3JjzyN_CDYObMB3AgTUs5WdfbIPW7
