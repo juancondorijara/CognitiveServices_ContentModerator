@@ -4,6 +4,7 @@ import pe.edu.vallegrande.app.model.ContentModerator;
 import pe.edu.vallegrande.app.repository.ContentModeratorRepository;
 import pe.edu.vallegrande.app.service.ContentModeratorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -31,6 +32,9 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
         log.info("Mostrando datos");
         return contentModeratorRepository.getAll();
     }
+
+    //@Value("${spring.content-moderator.api-key}")
+    //private String apiKey;
 
     @Override
     public Mono<ContentModerator> save(ContentModerator contentModerator) {
