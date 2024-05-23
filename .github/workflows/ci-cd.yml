@@ -1,8 +1,8 @@
-name: SonarCloud
+name: SonarCloud + Docker Hub
 on:
   push:
     branches:
-      - develop-spring-boo
+      - develop-spring-boot
 
 jobs:
   #SONARCLOUD
@@ -35,4 +35,30 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=juancondorijara_CognitiveServices_ContentModerator
-  
+        
+  #DOCKERHUB
+  dockerhub:
+    name: Build and Push Image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'zulu'
+      - name: Build With Maven
+        run: mvn clean install         
+      - name: docker login
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and Push Docker Image to Docker Hub
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          dockerfile: Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ms_content_moderator:latest
