@@ -33,8 +33,8 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
         return contentModeratorRepository.getAll();
     }
 
-    //@Value("${spring.content-moderator.api-key}")
-    //private String apiKey;
+    @Value("${spring.contentmoderator.apikey}")
+    private String apiKey;
 
     @Override
     public Mono<ContentModerator> save(ContentModerator contentModerator) {
@@ -47,7 +47,7 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
                 .method("POST", body)
                 .addHeader("Host", "eastus.api.cognitive.microsoft.com")
                 .addHeader("Content-Type", "application/json")
-                .addHeader("Ocp-Apim-Subscription-Key", "8150ba9e33824e3a9ff48a5f29eeb7ce")
+                .addHeader("Ocp-Apim-Subscription-Key", apiKey)
                 .build();
         Response response = client.newCall(request).execute();
         JSONObject jsonObject = new JSONObject(response.body().string());
