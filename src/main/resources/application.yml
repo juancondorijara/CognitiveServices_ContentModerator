@@ -7,5 +7,6 @@ spring:
   r2dbc:
     url: ${{ DATABASE_URL }}
     username: ${{ DATABASE_USERNAME }}
-    password: ${{ DATABASE_PASSWORD }}
-
+    password: ${DATABASE_PASSWORD}
+  contentmoderator:
+    apikey: ${API_KEY}
