@@ -1,0 +1,82 @@
+<div class="container" style="text-align: center">
+    <h1>MODERADOR DE CONTIDO: URL DE IMÁGENES</h1>
+    <form>
+        <br/>
+        <div class="row">
+            <div class="form-outline col">
+                <input type="text" class="form-control" value={{contentModerator.url}}>
+                <br/>
+                <button type="button" class="btn btn-dark" (click)="save()">
+                    <em class="fa-solid fa-floppy-disk"></em>
+                    CONSULTAR
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<br>
+
+<div class="container" style="text-align: center">
+    <div class="container w-25 p-1">
+        <h5>FILTRO POR:</h5>
+        <select class="form-select" (change)="listContentModerator()" [(ngModel)]="contentModerator_type_list" style="color: black; font-weight: bold;" aria-label="Filtro" style="width: 300px;">
+            <option value=1 style="color: black; font-weight: bold;">ACTIVOS</option>
+            <option value=2 style="color: red; font-weight: bold;">INACTIVOS</option>
+            <option value=3 style="color: orange; font-weight: bold;">TODOS</option>
+        </select>
+    </div>
+    <br>
+    <form>
+        <table class="table table-striped table-bordered mat-elevation-z8">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col" class="text-bold col-2">#</th>
+                    <th scope="col" style="text-align: center">ADULTO SCORE</th>
+                    <th scope="col" style="text-align: center">PICANTE SCORE</th>
+                    <th scope="col" style="text-align: center">URL</th>
+                    <th scope="col" style="text-align: center; width:100px">IMAGEN</th>
+                    <th scope="col" style="text-align: center">RESULTADO</th>
+                    <!-- <th scope="col" style="text-align: center">A</th> -->
+                    <th scope="col" style="text-align: center">ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let contentModerator of contentModerators">
+                    <td>{{contentModerator.id}}</td>
+                    <td>{{contentModerator.adultClassificationScore | number:'1.2-3' }}</td>
+                    <td>{{contentModerator.racyClassificationScore | number:'1.2-3' }}</td>
+                    <td>
+                        <!-- <a href="{{contentModerator.url}}" target="_blank">Imagen URL</a> -->
+                        <img [src]="contentModerator.url" alt="" width="80" height="50">
+                    </td>
+                    <td>
+                        <img [src]="contentModerator.image" alt="" width="50" height="50">
+                    </td>
+                    <td>{{contentModerator.resultString}}</td>
+                    <!-- <td>{{contentModerator.active}}</td> -->
+                    <td style="text-align: center">
+                        <button type="button" *ngIf="contentModerator.active == true" class="btn btn-dark btn-sm">
+                            <em class="fa-sharp fa-solid fa-pen-to-square"></em>
+                            EDITAR
+                        </button>
+                        <button type="button" *ngIf="contentModerator.active == true" class="btn btn-danger btn-sm" (click)="delete(contentModerator.id)">
+                            <em class="fa-solid fa-trash"></em>
+                            ELIMINAR
+                        </button>
+                        <button type="button" *ngIf="contentModerator.active == false" class="btn btn-warning btn-sm" (click)="restore(contentModerator.id)">
+                            <em class="fa-solid fa-trash-can-arrow-up"></em>
+                            RESTAURAR
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="contentModerators.length == 0" style="text-align: center">
+            <p class="fw-semibold fs-6" style="color: #BD1F09;">
+                <em class="fa-solid fa-circle-xmark"></em> Sin Registros...
+            </p>
+        </div>
+    </form>
+</div>
