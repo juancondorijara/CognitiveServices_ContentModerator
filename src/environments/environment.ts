@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  contentModerator_be: 'http://localhost:8085/ms_content_moderator'
+  contentModerator_be: 'https://silver-space-orbit-q6rp6wpvwv5f6775-8085.app.github.dev/ms_content_moderator'
 };
 
 /*
