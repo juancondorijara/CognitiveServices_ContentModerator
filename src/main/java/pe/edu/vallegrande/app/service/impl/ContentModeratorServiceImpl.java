@@ -5,6 +5,8 @@ import pe.edu.vallegrande.app.repository.ContentModeratorRepository;
 import pe.edu.vallegrande.app.service.ContentModeratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -28,13 +30,25 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
     }
 
     @Override
-    public Flux<ContentModerator> getAll() {
+    public Flux<ContentModerator> findAll() {
         log.info("Mostrando datos");
-        return contentModeratorRepository.getAll();
+        return contentModeratorRepository.findAll();
+    }
+
+    @Override
+    public Mono<ContentModerator> findById(Integer id) {
+        log.info("Mostrando datos");
+        return contentModeratorRepository.findById(id);
+    }
+
+    @Override
+    public Flux<ContentModerator> findByActive(boolean active) {
+        log.info("Personas filtradas por estado = " + active);
+        return contentModeratorRepository.findByActive(active);
     }
 
     @Value("${spring.contentmoderator.apikey}")
-    private String apiKey;
+    private String apiKey; //"8150ba9e33824e3a9ff48a5f29eeb7ce"
 
     @Override
     public Mono<ContentModerator> save(ContentModerator contentModerator) {
@@ -56,19 +70,47 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
         contentModerator.setRacyClassificationScore(jsonObject.getDouble("RacyClassificationScore"));
         contentModerator.setImageRacyClassified(jsonObject.getBoolean("IsImageRacyClassified"));
         contentModerator.setResultBoolean(jsonObject.getBoolean("Result"));
+        contentModerator.setActive(true);
 
         if (contentModerator.isResultBoolean()) {
-            contentModerator.setImage("https://drive.google.com/file/d/114tPPHGydO4lBw-X9DR2JYqXSMncvaYg/view?usp=drive_link");
+            contentModerator.setImage("https://illustoon.com/photo/951.png");
             contentModerator.setResultString("Imagen MODERADA para ADULTOS u OBSCENA");
         } else {
-            contentModerator.setImage("https://drive.google.com/file/d/1AvwuhGqrgZyA14rFG_8uCVbgaLD3_32H/view?usp=drive_link");
+            contentModerator.setImage("https://illustoon.com/photo/7504.png");
             contentModerator.setResultString("Imagen NO MODERADA");
         }
 
         } catch (Exception e) {
             log.error("Error en el API: " + e.getMessage());
         }
+        log.info("Creado = " + contentModerator.toString());
         return contentModeratorRepository.save(contentModerator);
     }
+
+    @Override
+    public Mono<ContentModerator> update(ContentModerator contentModerator) {
+        log.info("Actualizado = " + contentModerator.toString());
+        contentModerator.setActive(true);
+        return contentModeratorRepository.save(contentModerator);
+    }
+
+    @Override
+    public Mono<ResponseEntity<ContentModerator>> delete(Integer id) {
+        log.info("Eliminado = " + id);
+        return contentModeratorRepository.findById(id).flatMap(newContentModerator -> {
+            newContentModerator.setActive(false);
+            return contentModeratorRepository.save(newContentModerator);
+        }).map(updatedDocument -> new ResponseEntity<>(updatedDocument, HttpStatus.OK)).defaultIfEmpty(new ResponseEntity<>(HttpStatus.OK));
+    }
+
+    @Override
+    public Mono<ResponseEntity<ContentModerator>> restore(Integer id) {
+        log.info("Restaurado = " + id);
+        return contentModeratorRepository.findById(id).flatMap(newContentModerator -> {
+            newContentModerator.setActive(true);
+            return contentModeratorRepository.save(newContentModerator);
+        }).map(updatedDocument -> new ResponseEntity<>(updatedDocument, HttpStatus.OK)).defaultIfEmpty(new ResponseEntity<>(HttpStatus.OK));
+    }
+
 
 }

@@ -36,4 +36,7 @@ public class ContentModerator {
     @Column(value = "resultstring")
     private String resultString;
 
+    @Column(value = "active")
+    private boolean active;
+
 }
