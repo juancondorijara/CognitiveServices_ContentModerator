@@ -1,17 +1,13 @@
-version: '3.8'
+version: '2.27'
 
 services:
   app:
-    image: juan321/ms_content_moderator:latest
+    #image: juan321/ms_content_moderator:latest
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8085:8085"
-    secrets:
-      - DATABASE_URL
-      - DATABASE_USERNAME
-      - DATABASE_PASSWORD
     environment:
       DATABASE_URL: /run/secrets/DATABASE_URL
       DATABASE_USERNAME: /run/secrets/DATABASE_USERNAME
