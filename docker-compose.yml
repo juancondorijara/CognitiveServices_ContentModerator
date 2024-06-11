@@ -13,9 +13,9 @@ services:
       - DATABASE_USERNAME
       - DATABASE_PASSWORD
     environment:
-      DATABASE_URL_FILE: /run/secrets/DATABASE_URL
-      DATABASE_USERNAME_FILE: /run/secrets/DATABASE_USERNAME
-      DATABASE_PASSWORD_FILE: /run/secrets/DATABASE_PASSWORD
+      DATABASE_URL: /run/secrets/DATABASE_URL
+      DATABASE_USERNAME: /run/secrets/DATABASE_USERNAME
+      DATABASE_PASSWORD: /run/secrets/DATABASE_PASSWORD
 
 secrets:
   DATABASE_URL:
