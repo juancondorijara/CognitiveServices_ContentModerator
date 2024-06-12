@@ -1,0 +1,12 @@
+{
+    "name": "Java",
+    "build": {
+      "dockerfile": "Dockerfile",
+      "args": {
+        "DATABASE_URL": "${env:DATABASE_URL}",
+        "DATABASE_USERNAME": "${env:DATABASE_USERNAME}",
+        "DATABASE_PASSWORD": "${env:DATABASE_PASSWORD}"
+      }
+    }
+  }
+  
