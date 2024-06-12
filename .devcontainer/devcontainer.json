@@ -1,4 +1,4 @@
-{
+/*{
     "name": "Java",
     "build": {
       "dockerfile": "Dockerfile",
@@ -8,5 +8,5 @@
         "DATABASE_PASSWORD": "${env:DATABASE_PASSWORD}"
       }
     }
-  }
+  }*/
   
