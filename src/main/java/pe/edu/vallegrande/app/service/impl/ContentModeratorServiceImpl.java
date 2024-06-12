@@ -55,6 +55,7 @@ public class ContentModeratorServiceImpl implements ContentModeratorService {
         try {
         OkHttpClient client = new OkHttpClient().newBuilder().build();
         MediaType mediaType = MediaType.parse("application/json");
+        @SuppressWarnings("deprecation")
         RequestBody body = RequestBody.create(mediaType, "{\r\n  \"DataRepresentation\":\"URL\",\r\n  \"Value\":\"" + contentModerator.getUrl() + "\"\r\n}");
         Request request = new Request.Builder()
                 .url("https://eastus.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessImage/Evaluate")
