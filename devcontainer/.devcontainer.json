@@ -1,0 +1,29 @@
+{
+  "name": "Spring Boot Project",
+  "image": "mcr.microsoft.com/devcontainers/java:17",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+      },
+      "extensions": [
+        "vscjava.vscode-java-pack",
+        "pivotal.vscode-spring-boot",
+        "vscjava.vscode-spring-initializr",
+        "vscjava.vscode-maven",
+        "redhat.vscode-yaml"
+      ]
+    }
+  },
+  "remoteEnv": {
+    "DATABASE_URL": "${{ secrets.DATABASE_URL }}",
+    "DATABASE_USERNAME": "${{ secrets.DATABASE_USERNAME }}",
+    "DATABASE_PASSWORD": "${{ secrets.DATABASE_PASSWORD }}",
+    "API_KEY": "${{ secrets.API_KEY }}"
+  },
+  "postCreateCommand": "sdk install java 17.0.11-jbr &&& mvn clean install -DskipTests",
+  "forwardPorts": [
+    8085
+  ],
+  "remoteUser": "vscode"
+}
