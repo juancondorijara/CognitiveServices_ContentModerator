@@ -8,6 +8,7 @@ WORKDIR /app
 COPY target/*.jar app.jar
 #COPY --from=builder /app/target/*.jar app.jar
 
+
 ENV PORT ${PORT}
 ENV DATABASE_URL ${DATABASE_URL}
 ENV DATABASE_USERNAME ${DATABASE_USERNAME}
