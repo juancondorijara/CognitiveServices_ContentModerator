@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-content-moderator-be
+  name: deployment-be
 spec:
   replicas: 1  # Número de réplicas del microservicio
   selector:
