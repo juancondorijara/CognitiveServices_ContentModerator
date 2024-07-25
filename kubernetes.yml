@@ -2,12 +2,12 @@
 # minikube start
 # kubectl apply -f kubernetes.yml
 
+
 # kubectl create namespace juan
 # kubectl config set-context --current --namespace=juan
 # kubectl config view --minify | grep namespace
 # kubectl get all --all --namespace=juan
 # kubectl delete all --all --namespace=juan
-
 
 
 # kubectl apply -f namespace.yml
@@ -20,10 +20,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: person-be
+  name: person-be-1
   namespace: juan
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: person-be
@@ -37,21 +37,21 @@ spec:
         image: juan321/ms_person_be:latest
         ports:
         - containerPort: 8081  # Puerto que expone el contenedor
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "125m"
-          limits:
-            memory: "128Mi"
-            cpu: "300m"
+        #resources:
+        #  requests:
+        #    memory: "64Mi"
+        #    cpu: "125m"
+        #  limits:
+        #    memory: "128Mi"
+        #    cpu: "300m"
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: product-be
+  name: product-be-1
   namespace: juan
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: product-be
@@ -65,19 +65,19 @@ spec:
         image: juan321/ms_product_be:latest
         ports:
         - containerPort: 8082  # Puerto que expone el contenedor
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "125m"
-          limits:
-            memory: "128Mi"
-            cpu: "300m"
+        #resources:
+        #  requests:
+        #    memory: "64Mi"
+        #    cpu: "125m"
+        #  limits:
+        #    memory: "128Mi"
+        #    cpu: "300m"
 ---
 # kubectl apply -f service.yml
 apiVersion: v1
 kind: Service
 metadata:
-  name: person-be
+  name: person-be-11
   namespace: juan
 spec:
   selector:
@@ -86,12 +86,13 @@ spec:
     - protocol: TCP
       port: 8081  # Puerto expuesto por el Service
       targetPort: 8081  # Puerto en el contenedor
-  type: LoadBalancer  # Puedes usar ClusterIP, NodePort, o LoadBalancer según tus necesidades
+      #nodePort: 30001
+  type: NodePort  # Puedes usar ClusterIP, NodePort, o LoadBalancer según tus necesidades
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: product-be
+  name: product-be-11
   namespace: juan
 spec:
   selector:
@@ -100,4 +101,5 @@ spec:
     - protocol: TCP
       port: 8082  # Puerto expuesto por el Service
       targetPort: 8082  # Puerto en el contenedor
-  type: LoadBalancer  # Puedes usar ClusterIP, NodePort, o LoadBalancer según tus necesidades
+      #nodePort: 30002
+  type: NodePort  # Puedes usar ClusterIP, NodePort, o LoadBalancer según tus necesidades
