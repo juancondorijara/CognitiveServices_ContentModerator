@@ -1,12 +1,12 @@
 version: '2'
 
 services:
-  app-person:
+  app-person-be:
     image: juan321/ms_person_be:latest
     container_name: ms_person_be
     ports:
       - "8081:8081"
-  app-product:
+  app-product-be:
     image: juan321/ms_product_be:latest
     container_name: ms_product_be
     ports:
