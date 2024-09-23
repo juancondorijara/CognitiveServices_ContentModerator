@@ -5,6 +5,17 @@ docker build -t juan321/ms_content_moderator_be:latest .
 docker run --name mycontenedor -e DATABASE_URL=r2dbc:postgres://batyr.db.elephantsql.com:5432/mkyhttrp -e DATABASE_USERNAME=mkyhttrp -e DATABASE_PASSWORD=BrP3JjzyN_CDYObMB3AgTUs5WdfbIPW7 -e API_KEY=8150ba9e33824e3a9ff48a5f29eeb7ce -p 8085:8085 juan321/ms_content_moderator_be
 
 
+DOCKER RUN PLANTILLA VARIABLES
+docker run --name mycontenedor 
+-e DATABASE_URL=r2dbc:postgresql://localhost:5432/mydatabase
+-e DATABASE_USERNAME=myusername 
+-e DATABASE_PASSWORD=mypassword 
+-e API_KEY=myapikey 
+-p 8085:8085 juan321/ms_content_moderator_be
+
+
+
+
 
 #FROM maven:3.9.0 AS builder
 #WORKDIR /app
