@@ -23,3 +23,48 @@
 * r2dbc-postgresql
 * json
 * okhttp
+
+## **Dependencias Spring WebFlux + Postgre (SQL)**
+
+Spring WebFlux | Data R2DBC | Project Reactor | R2DBC PostgreSQL
+```
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+</dependency>
+<dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-test</artifactId>
+      <scope>test</scope>
+</dependency>
+<dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>r2dbc-postgresql</artifactId>
+      <scope>runtime</scope>
+</dependency>
+```
+## **Dependencias Spring WebFlux + MongoDB (NoSQL)**
+```
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-webflux</artifactId>
+</dependency>
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+</dependency>
+<dependency>
+      <groupId>io.projectreactor</groupId>
+      <artifactId>reactor-test</artifactId>
+      <scope>test</scope>
+</dependency>
+<dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>r2dbc-postgresql</artifactId>
+      <scope>runtime</scope>
+</dependency>
+```
