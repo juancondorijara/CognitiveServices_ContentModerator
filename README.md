@@ -55,7 +55,7 @@ Spring WebFlux | Data R2DBC | Project Reactor | R2DBC PostgreSQL
 </dependency>
 <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-data-r2dbc</artifactId>
+      <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
 </dependency>
 <dependency>
       <groupId>io.projectreactor</groupId>
