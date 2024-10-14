@@ -12,4 +12,5 @@ spring:
     #username: ${DATABASE_USERNAME}
     #password: ${DATABASE_PASSWORD}
   contentmoderator:
-    apikey: ${API_KEY}
+    apikey: 8150ba9e33824e3a9ff48a5f29eeb7ce
+    #apikey: ${API_KEY} 
