@@ -3,7 +3,7 @@ name: SonarCloud
 on:
   push:
     branches:
-      - develop-spring-boot
+      - develop-spring-boo
 
 jobs:
   #SONARCLOUD 
