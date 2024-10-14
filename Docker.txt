@@ -2,6 +2,9 @@ sdk install java 17.0.11-jbr
 mvn clean install -DskipTest
 
 docker build -t juan321/ms_content_moderator_be:latest .
+docker run --name moderator_be -p 8085:8085 juan321/ms_content_moderator_be:latest
+docker push juan321/ms_content_moderator_be:latest
+
 docker run --name mycontenedor -e DATABASE_URL=r2dbc:postgres://batyr.db.elephantsql.com:5432/mkyhttrp -e DATABASE_USERNAME=mkyhttrp -e DATABASE_PASSWORD=BrP3JjzyN_CDYObMB3AgTUs5WdfbIPW7 -e API_KEY=8150ba9e33824e3a9ff48a5f29eeb7ce -p 8085:8085 juan321/ms_content_moderator_be
 
 
