@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  app:
+    image: juan321/ms_content_moderator_be:latest
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
+    ports:
+      - "8085:8085"
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      API_KEY: ${API_KEY}
+      #DATABASE_URL: /run/secrets/DATABASE_URL
+      #DATABASE_USERNAME: /run/secrets/DATABASE_USERNAME
+      #DATABASE_PASSWORD: /run/secrets/DATABASE_PASSWORD
+      #API_KEY: /run/secrets/API_KEY
+    #secrets:
+      #- DATABASE_URL
+      #- DATABASE_USERNAME
+      #- DATABASE_PASSWORD
+      #- API_KEY
+
+#secrets:
+#  DATABASE_URL:
+#    external: true
+#  DATABASE_USERNAME:
+#    external: true
+#  DATABASE_PASSWORD:
+#    external: true
+#  API_KEY:
+#    external: true
+
+#.env
+#DATABASE_URL=${{ secrets.DATABASE_URL }}
+#DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
+#DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
+#API_KEY=${{ secrets.API_KEY }}
