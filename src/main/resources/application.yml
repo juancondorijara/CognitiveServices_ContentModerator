@@ -5,12 +5,12 @@ spring:
   application:
     name: ms_content_moderator
   r2dbc:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
-    #url: r2dbc:postgres://batyr.db.elephantsql.com:5432/mkyhttrp
-    #username: mkyhttrp
-    #password: BrP3JjzyN_CDYObMB3AgTUs5WdfbIPW7
+    url: r2dbc:postgres://batyr.db.elephantsql.com:5432/mkyhttrp
+    username: mkyhttrp
+    password: BrP3JjzyN_CDYObMB3AgTUs5WdfbIPW7
+    #url: ${DATABASE_URL}
+    #username: ${DATABASE_USERNAME}
+    #password: ${DATABASE_PASSWORD}
   contentmoderator:
-    apikey: ${API_KEY} 
-    #apikey: 8150ba9e33824e3a9ff48a5f29eeb7ce
+    apikey: 8150ba9e33824e3a9ff48a5f29eeb7ce
+    #apikey: ${API_KEY} 
