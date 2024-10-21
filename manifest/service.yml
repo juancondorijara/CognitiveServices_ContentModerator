@@ -1,0 +1,14 @@
+#kubectl apply -f service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: moderator-be
+  namespace: juan
+spec:
+  type: LoadBalancer   # Cambia a LoadBalancer si estás en un entorno de nube
+  ports:
+  - port: 8085     # Puerto que el Service expondrá
+    targetPort: 8085  # Puerto en el contenedor donde tu aplicación escucha
+    nodePort: 30001  # Puerto asignado en el nodo, opcional
+  selector:
+    app: moderator-be  # Debe coincidir con las etiquetas del Deployment
