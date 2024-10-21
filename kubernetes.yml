@@ -6,8 +6,8 @@
 # kubectl create namespace juan
 # kubectl config set-context --current --namespace=juan
 # kubectl config view --minify | grep namespace
-# kubectl get all --all --namespace=juan
-# kubectl delete all --all --namespace=juan
+# kubectl get all --namespace=juan
+# kubectl delete all --namespace=juan
 
 
 # kubectl apply -f namespace.yml
