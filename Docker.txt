@@ -2,11 +2,13 @@ sdk install java 17.0.11-jbr
 mvn clean install -DskipTest
 
 docker build -t juan321/ms_content_moderator_be:latest .
-docker run --name moderator_be -p 8085:8085 juan321/ms_content_moderator_be:latest
+docker build -t juan321/ms_content_moderator_be:1.0 .
+docker tag <ID_de_imagen> <nuevo_nombre>:<nuevo_tag>
+docker tag cff82b91aea1 juan/ms_content_moderator_be:1.0
+
 docker push juan321/ms_content_moderator_be:latest
 
-docker run --name mycontenedor -e DATABASE_URL=r2dbc:postgres://batyr.db.elephantsql.com:5432/mkyhttrp -e DATABASE_USERNAME=mkyhttrp -e DATABASE_PASSWORD=BrP3JjzyN_CDYObMB3AgTUs5WdfbIPW7 -e API_KEY=8150ba9e33824e3a9ff48a5f29eeb7ce -p 8085:8085 juan321/ms_content_moderator_be
-
+docker run --name mycontenedor -e DATABASE_URL=r2dbc:postgres://batyr.db.elephantsql.com:5432/mkyhttrp -e DATABASE_USERNAME=mkyhttrp -e DATABASE_PASSWORD=BrP3JjzyN_CDYObMB3AgTUs5WdfbIPW7 -e API_KEY=8150ba9e33824e3a9ff48a5f29eeb7ce -p 8085:8085 juan321/ms_content_moderator_be:latest
 
 DOCKER RUN PLANTILLA VARIABLES
 docker run --name mycontenedor 
@@ -18,22 +20,20 @@ docker run --name mycontenedor
 
 
 
+docker rm -f $(docker ps -a -q)
+docker rmi -f $(docker images -q)
 
 
-#FROM maven:3.9.0 AS builder
-#WORKDIR /app
-#COPY . .
-#RUN mvn clean install -DskipTests
-
+--------------------------------------------
 FROM openjdk:17
 WORKDIR /app
 COPY target/*.jar app.jar
-#COPY --from=builder /app/target/*.jar app.jar
 
-ENV PORT ${PORT}
 ENV DATABASE_URL ${DATABASE_URL}
 ENV DATABASE_USERNAME ${DATABASE_USERNAME}
 ENV DATABASE_PASSWORD ${DATABASE_PASSWORD}
+ENV API_KEY ${API_KEY}
 
 EXPOSE 8085
 ENTRYPOINT ["java", "-jar", "app.jar"]
+--------------------------------------------
