@@ -42,3 +42,6 @@ curl http://192.168.49.2:30001/ms_content_moderator/id/1
 
 # crear un túnel de puerto la máquina local (host) y el clúster de Kubernetes
 kubectl port-forward service/content-moderator-be 8085:30001
+
+# ver los logs del pod (logs del proyecto)
+kubectl logs nombre-pod
