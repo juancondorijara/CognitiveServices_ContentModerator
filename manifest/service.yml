@@ -12,3 +12,6 @@ spec:
     nodePort: 30001   # Puerto asignado en el nodo, opcional
   selector:
     app: content-moderator-be  # Debe coincidir con las etiquetas del Deployment
+
+#echo -n "demo123" | base64
+#echo "ZGVtbzEyMw==" | base64 --decode    
