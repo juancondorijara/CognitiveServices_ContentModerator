@@ -1,40 +1,40 @@
-#kubectl apply -f deployment.yml
+# kubectl apply -f deployment.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: content-moderator-be
   namespace: juan
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: moderator-be
+      app: content-moderator-be
   template:
     metadata:
       labels:
-        app: moderator-be
+        app: content-moderator-be
     spec:
       containers:
       - name: content-moderator-be
-        image: juan321/ms_content_moderator_be:latest  # Reemplaza con tu imagen Docker
+        image: juan321/ms_content_moderator_be:latest   # Reemplaza con tu imagen Docker
         env:
         - name: DATABASE_URL
           valueFrom:
             secretKeyRef:
-              name: username-password-url-apikey-secret  # Nombre del Secret
-              key: url                                   # Clave dentro del Secret
+              name: database-credentials                # Nombre del Secret
+              key: DATABASE_URL                         # Clave dentro del Secret
         - name: DATABASE_USERNAME
           valueFrom:
             secretKeyRef:
-              name: username-password-url-apikey-secret
-              key: username
+              name: database-credentials
+              key: DATABASE_USERNAME
         - name: DATABASE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: username-password-url-apikey-secret
-              key: password
+              name: database-credentials
+              key: DATABASE_PASSWORD
         - name: API_KEY
           valueFrom:
             secretKeyRef:
-              name: username-password-url-apikey-secret
-              key: apikey
+              name: database-credentials
+              key: API_KEY
