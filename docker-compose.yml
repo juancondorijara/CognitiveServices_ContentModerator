@@ -1,12 +1,19 @@
 version: '2'
 
 services:
-  secreto-service:
-    image: alpine
-    command: sh -c "cat /run/secrets/mi_secreto"
-    secrets:
-      - mi_secreto
-
-secrets:
-  mi_secreto:
-    external: false
+  app1:
+    image: juan321/ms_content_moderator_be:latest
+    ports:
+      - "8085:8085"
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      API_KEY: ${API_KEY}
+  app2:
+    image: angelcastilla/frontend:latest
+    container_name: frontend
+    ports:
+      - "4200:4200"
+    environment:
+      BACKEND_URL: ${BACKEND_URL}

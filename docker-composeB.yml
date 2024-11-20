@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  secreto-service:
+    image: alpine
+    command: sh -c "cat /run/secrets/mi_secreto"
+    secrets:
+      - mi_secreto
+
+secrets:
+  mi_secreto:
+    external: false
