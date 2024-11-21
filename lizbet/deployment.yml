@@ -1,0 +1,39 @@
+# kubectl apply -f deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatiris
+  namespace: lizbet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatiris
+  template:
+    metadata:
+      labels:
+        app: chatiris
+    spec:
+      containers:
+      - name: chatiris
+        image: lizbet/chatiris:latest   # Reemplaza con tu imagen Docker
+---
+# kubectl apply -f deployment.yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatiris2
+  namespace: lizbet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatiris2
+  template:
+    metadata:
+      labels:
+        app: chatiris2
+    spec:
+      containers:
+      - name: chatiris2
+        image: otraimages:latest   # Reemplaza con tu imagen Docker        

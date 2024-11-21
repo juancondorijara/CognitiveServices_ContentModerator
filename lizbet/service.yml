@@ -1,0 +1,29 @@
+# kubectl apply -f service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatiris
+  namespace: lizbet
+spec:
+  type: NodePort      #30000-32767  # Cambia a LoadBalancer si estás en un entorno de nube
+  ports:
+  - port: 30001       # Puerto que el Service expondrá
+    targetPort: 8085  # Puerto en el contenedor donde tu aplicación escucha
+    nodePort: 30001   # Puerto asignado en el nodo, opcional
+  selector:
+    app: chatiris  # Debe coincidir con las etiquetas del Deployment
+---
+# kubectl apply -f service.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatiris2
+  namespace: lizbet
+spec:
+  type: NodePort      #30000-32767  # Cambia a LoadBalancer si estás en un entorno de nube
+  ports:
+  - port: 30002       # Puerto que el Service expondrá
+    targetPort: 8086  # Puerto en el contenedor donde tu aplicación escucha
+    nodePort: 30002   # Puerto asignado en el nodo, opcional
+  selector:
+    app: chatiris2  # Debe coincidir con las etiquetas del Deployment
