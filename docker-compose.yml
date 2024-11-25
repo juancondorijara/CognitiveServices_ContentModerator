@@ -6,14 +6,13 @@ services:
     ports:
       - "8085:8085"
     environment:
-      DATABASE_URL: ${DATABASE_URL}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      API_KEY: ${API_KEY}
+      DATABASE_URL: r2dbc:postgres://batyr.db.elephantsql.com:5432/mkyhttrp
+      DATABASE_USERNAME: mkyhttrp
+      DATABASE_PASSWORD: BrP3JjzyN_CDYObMB3AgTUs5WdfbIPW7
+      API_KEY: 8150ba9e33824e3a9ff48a5f29eeb7ce
   app2:
-    image: angelcastilla/frontend:latest
-    container_name: frontend
+    image: juan321/ms_content_moderator_fe:latest
     ports:
       - "4200:4200"
     environment:
-      BACKEND_URL: ${BACKEND_URL}
+      API_BACKEND: https://redesigned-fiesta-j96q9xqr6wv3pw44-8085.app.github.dev/ms_content_moderator
