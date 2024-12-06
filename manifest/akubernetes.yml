@@ -20,8 +20,11 @@ metadata:
   name: juan
 ---
 
-# consultar namespace en uso por "default"
+# consultar namespace en uso por "default" | LINUX
 kubectl config view --minify | grep namespace
+
+# consultar namespace en uso por "default" | WINDOWS
+kubectl config view --minify | findstr namespace
 
 # cambiar un namespace en uso por "default" a "juan"
 kubectl config set-context --current --namespace=juan
